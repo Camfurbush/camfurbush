@@ -3,6 +3,7 @@ theme:
   palette:
     scheme: slate
   name: material
-
+  icon:
+      logo: material/bookshelf
 repo_url: https://github.com/Camfurbush/camfurbush
 repo_name: Camfurbush/camfurbush
