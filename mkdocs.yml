@@ -1,5 +1,7 @@
 site_name: Camfurbush Docs
 theme:
+  palette:
+    scheme: slate
   name: material
 
 repo_url: https://github.com/Camfurbush/camfurbush
