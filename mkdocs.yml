@@ -1,0 +1,6 @@
+site_name: Camfurbush Docs
+theme:
+  name: material
+
+repo_url: https://github.com/Camfurbush/camfurbush
+repo_name: Camfurbush/camfurbush
