@@ -1,9 +1,5 @@
 site_name: Camfurbush Docs
 theme:
-  palette:
-    scheme: slate
-  name: material
-  icon:
-      logo: material/bookshelf
+  name: dracula
 repo_url: https://github.com/Camfurbush/camfurbush
 repo_name: Camfurbush/camfurbush
