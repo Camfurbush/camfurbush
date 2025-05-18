@@ -16,7 +16,7 @@ jobs:
           python-version: 3.x
           
       - name: Install Requirements
-        run: pip install mkdocs
+        run: pip install mkdocs mkdocs-material
 
       - name: Deploy Mkdocs
         run: mkdocs gh-deploy --force
