@@ -1,4 +1,4 @@
-name: ci
+name: Deploy Docs
 on:
   push:
     branches:
@@ -7,9 +7,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install mkdocs mkdocs-dracula-theme
-      - run: mkdocs gh-deploy --force
+          
+      - name: Install Requirements
+        run: apt install hugo
+
+      - name: Deploy Mkdocs
+        run: mkdocs gh-deploy --force
