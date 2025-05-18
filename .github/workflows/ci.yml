@@ -16,7 +16,7 @@ jobs:
           python-version: 3.x
           
       - name: Install Requirements
-        run: apt install hugo
+        run: pip install mkdocs mkdocs-dracula-theme
 
       - name: Deploy Mkdocs
         run: mkdocs gh-deploy --force
