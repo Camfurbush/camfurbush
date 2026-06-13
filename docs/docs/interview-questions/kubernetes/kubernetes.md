@@ -1,28 +1,42 @@
-# Kubernetes
 
-- [Kubernetes](#kubernetes)
-  - [What is Docker?](#what-is-docker)
-  - [What is Kubernetes?](#what-is-kubernetes)
-  - [How are Kubernetes and Docker related](#how-are-kubernetes-and-docker-related)
-  - [What is Minikube?](#what-is-minikube)
-  - [Guides](#guides)
-
-## What is Docker?
-
-- Docker is an open-source platform that allows developers to automate the deployment of applications inside lightweight, portable containers. It ensures that the application runs consistently across different environments.
+# Kubernetes Interview Questions
 
 ## What is Kubernetes?
 
-- Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It helps manage clusters of containers at scale.
+- Kubernetes is an open-source container orchestration system for automating deployment, scaling, and management of containerized applications.
 
-## How are Kubernetes and Docker related
+## Key Kubernetes concepts
 
-- Docker is an open-source platform/runtime utilizing cgroups to run software in a containerized environment. Its main benefit is that it packages the settings and dependencies that the software/application needs to run into a container, which allows for portability and several other advantages.
-- Kubernetes allows for the orchestration and deployment of containers. Kubernetes is typically run on a cluster
+- Pod: the smallest deployable unit (one or more containers with shared network and storage).
+- Deployment: declarative updates for Pods and ReplicaSets.
+- Service: stable network endpoint to expose Pods.
+- ConfigMap/Secret: store configuration and secrets for applications.
+- Namespace: virtual cluster to separate resources.
 
-## What is Minikube?
+## Networking basics
 
-- Software that allows you to run a single instance of Kubernetes locally. This allows you to deploy to your local cluster before deploying to a real cluster
+- ClusterIP: internal-only service.
+- NodePort: exposes service on each node's IP at a static port.
+- LoadBalancer: provision an external load balancer (cloud providers).
+- Ingress: L7 routing rules for HTTP(s) traffic.
+
+## How do you debug a failing Pod?
+
+- `kubectl get pods` to list pods and status.
+- `kubectl describe pod <pod>` to inspect events and conditions.
+- `kubectl logs <pod> [-c container]` for container logs.
+- `kubectl exec -it <pod> -- /bin/sh` to get a shell (if available).
+
+## Probes and health checks
+
+- Liveness probe: determines if a container is alive; failing it triggers a restart.
+- Readiness probe: indicates when a container is ready to receive traffic.
+
+## Common kubectl commands
+
+- `kubectl apply -f resource.yaml` - create/update resources
+- `kubectl get pods,svc,deploy` - list resources
+- `kubectl rollout status deployment/<name>` - check deployment progress
 
 ## Guides
 

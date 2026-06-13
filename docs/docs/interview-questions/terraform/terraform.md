@@ -1,43 +1,32 @@
-# Terraform
+# Terraform Interview Questions
 
-- [Terraform](#terraform)
-  - [Can you explain what Infrastructure as Code and why its important](#can-you-explain-what-infrastructure-as-code-and-why-its-important)
-  - [Whats the first command you run when start a terraform project](#whats-the-first-command-you-run-when-start-a-terraform-project)
-  - [What are the most useful Terraform commands?](#what-are-the-most-useful-terraform-commands)
-  - [What is the terraform state file and why is it important](#what-is-the-terraform-state-file-and-why-is-it-important)
-  - [How would you store your terraform state](#how-would-you-store-your-terraform-state)
-  - [What is a terraform backend](#what-is-a-terraform-backend)
-  - [What is State File Locking?](#what-is-state-file-locking)
+## What is Infrastructure as Code (IaC)?
 
-## Can you explain what Infrastructure as Code and why its important
+- IaC is the practice of defining infrastructure in declarative configuration files and managing it through version control.
 
-- Infrastructure as Code or IaC is a process that DevOps teams should follow to have a more organized way of managing the infra. Instead of some throwaway scripts or manually configuring any cloud component, there should be a code repo where all of these will lie and any change in configuration should be done through it. It is wise to put it under source control also. This improves speed, consistency, and accountability.
+## First command for Terraform projects
 
-## Whats the first command you run when start a terraform project
+- `terraform init`: initializes a working directory, downloads providers, and configures the backend.
 
-- terraform init to download the state and any providers
+## Useful Terraform commands
 
-## What are the most useful Terraform commands?
+- `terraform init` - initialize directory
+- `terraform plan` - show proposed changes
+- `terraform apply` - apply changes
+- `terraform destroy` - tear down resources
+- `terraform output` - read outputs
 
-- `terraform init` - initializes the current directory
-- `terraform refresh` - refreshes the state file
-- `terraform output` - views Terraform outputs
-- `terraform apply` - applies the Terraform code and builds stuff
-- `terraform destroy` - destroys what has been built by Terraform
-- `terraform graph` - creates a DOT-formatted graph
-- `terraform plan` - a dry run to see what Terraform will do
+## What is the Terraform state file?
 
-## What is the terraform state file and why is it important
+- Terraform stores information about managed infrastructure in the state file (`terraform.tfstate`). It maps resources in configuration to real-world objects and is necessary for planning and diffs.
 
-- Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures. This state is stored by default in a local file named "terraform.tfstate".
-- This is how terraform knows what actions to perform
+## Where to store Terraform state?
 
-## How would you store your terraform state
+- Use remote backends for collaboration and locking (e.g., S3 with DynamoDB locking, GCS, or Terraform Cloud).
 
-- You can store your terraform state in the local repository by default, but you should store it somewhere remotely like a backend or github (not for prod)
+## What is state locking?
 
-## What is a terraform backend
-
+- State locking prevents concurrent operations from corrupting the state. Many backends (S3+DynamoDB, GCS) support locking.
 - Each Terraform configuration can specify a backend, which defines two main things:
   - Where operations are performed (terraform cloud/enterprise)
   - Where the state is stored

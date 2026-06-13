@@ -1,43 +1,35 @@
-# Docker
+# Docker Interview Questions
 
 ## What is Docker?
 
-- Docker is a containerization platform which packages your application and all its dependencies together in the form of containers so as to ensure that your application works seamlessly in any environment be it development or test or production.
-- Docker containers, wrap a piece of software in a complete filesystem that contains everything needed to run: code, runtime, system tools, system libraries etc. anything that can be installed on a server.
-- This guarantees that the software will always run the same, regardless of its environment.
+- Docker is a containerization platform that packages an application and its dependencies in a lightweight, portable container image. Containers run consistently across environments.
 
-## What are docker images?
+## What is a Docker image and a container?
 
-They are executable packages(bundled with application code & dependencies, software packages, etc.) for the purpose of creating containers. Docker images can be deployed to any docker environment and the containers can be spun up there to run the application.
+- Image: a read-only template containing application code, runtime, libraries, and metadata.
+- Container: a running instance of an image with an isolated filesystem and process namespace.
 
-## What can you tell about Docker Compose?
+## What is Docker Compose?
 
-- It is a YAML file consisting of all the details regarding various services, networks, and volumes that are needed for setting up the Docker-based application. So, docker-compose is used for creating multiple containers, host them and establish communication between them. For the purpose of communication amongst the containers, ports are exposed by each and every container.
+- Docker Compose is a tool for defining and running multi-container applications using a YAML file (`docker-compose.yml`). It defines services, networks, and volumes.
 
-## Differentiate between COPY and ADD commands that are used in a Dockerfile?
+## CMD vs ENTRYPOINT
 
-- Both the commands have similar functionality, but COPY is more preferred because of its higher transparency level than that of ADD.
-- COPY provides just the basic support of copying local files into the container whereas ADD provides additional features like remote URL and tar extraction support.
+- CMD: provides default arguments for the container. Can be overridden by `docker run` arguments.
+- ENTRYPOINT: sets the main executable for the container. CMD can supply default arguments to ENTRYPOINT.
 
-## Can you explain the difference between CMD and ENTRYPOINT?
+## Common Docker commands
 
-- CMD command provides executable defaults for an executing container. In case the executable has to be omitted then the usage of ENTRYPOINT instruction along with the JSON array format has to be incorporated.
-- ENTRYPOINT specifies that the instruction within it will always be run when the container starts.
-  - This command provides an option to configure the parameters and the executables. If the DockerFile does not have this command, then it would still get inherited from the base image mentioned in the FROM instruction.
-  - The most commonly used ENTRYPOINT is /bin/sh or /bin/bash for most of the base images.
-- As part of good practices, every DockerFile should have at least one of these two commands
+- Build: `docker build -t myimage:tag .`
+- Run: `docker run --rm -it myimage:tag`
+- List images: `docker images`
+- Exec into running container: `docker exec -it <container> /bin/bash`
 
-## How would you download a remote docker image to your machine
+## Best practices
 
-- `docker pull <image_name>`
-
-## How do you create a docker container from an image?
-
-- `docker run -it -d <image_name>`
-
-## How would you connect to a running container
-
-- `docker exec -it <container id> bash`
+- Keep images small by using slim base images and multi-stage builds.
+- Pin base image versions.
+- Avoid storing secrets in images; use runtime secrets or external secret managers.
 
 ## How do you list all running docker images
 
